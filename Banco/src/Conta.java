@@ -4,4 +4,8 @@ public class Conta {
     int numero;
     double saldo;
 
+    void depositar (double valor){
+        saldo =saldo + valor;
+    }
+
 }
