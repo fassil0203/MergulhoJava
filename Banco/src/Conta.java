@@ -20,17 +20,11 @@ public class Conta {
         return titular;
     }
 
-    public void setTitular(Pessoa titular) {
-        this.titular = titular;
-    }
-
-    public int getAgencia() {
+       public int getAgencia() {
         return agencia;
     }
 
-    public void setAgencia(int agencia) {
-        this.agencia = agencia;
-    }
+
 
     public int getNumero() {
         return numero;
@@ -42,10 +36,6 @@ public class Conta {
 
     public double getSaldo() {
         return saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
     }
 
     void depositar (double valor){      //metodo
