@@ -1,3 +1,5 @@
+package com.algaworks.app;
+
 import java.util.Objects;
 
 public class Conta {
