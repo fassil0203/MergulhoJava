@@ -1,3 +1,8 @@
+package com.algaworks.app;
+
+import com.algaworks.modelo.Conta;
+import com.algaworks.modelo.Pessoa;
+
 public class Main {
     public static void main(String[] args) throws IllegalAccessException {
         Pessoa titular1 = new Pessoa();
@@ -22,17 +27,17 @@ public class Main {
 
         System.out.println("Titular :" + minhaConta.getTitular().getNome());
         System.out.println("Agencia :" + minhaConta.getAgencia());
-        System.out.println("Numero da Conta : " + minhaConta.getNumero());
-        System.out.println("Saldo da Conta : " + minhaConta.getSaldo());
+        System.out.println("Numero da com.algaworks.modelo.Conta : " + minhaConta.getNumero());
+        System.out.println("Saldo da com.algaworks.modelo.Conta : " + minhaConta.getSaldo());
 
         System.out.println("***************************************************");
         System.out.println("***************************************************");
 
 
-        System.out.println("Titula da Conta : " + titular1.getNome());
+        System.out.println("Titula da com.algaworks.modelo.Conta : " + titular1.getNome());
         System.out.println("Agencia :" + suaConta.getAgencia());
-        System.out.println("Numero da Conta :" + suaConta.getNumero());
-        System.out.println("Saldo da Conta :" + suaConta.getSaldo());
+        System.out.println("Numero da com.algaworks.modelo.Conta :" + suaConta.getNumero());
+        System.out.println("Saldo da com.algaworks.modelo.Conta :" + suaConta.getSaldo());
 
     }
 }

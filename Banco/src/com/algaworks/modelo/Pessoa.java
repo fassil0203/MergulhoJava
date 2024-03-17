@@ -1,4 +1,4 @@
-package com.algaworks.app;
+package com.algaworks.modelo;
 
 public class Pessoa {
     private String nome;

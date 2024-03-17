@@ -2335,7 +2335,7 @@
   <commands xmi:id="_ytWt9duXEe6ejcNNTwSAzA" elementId="org.springsource.ide.eclipse.boot.BootLaunchShortcut.run" commandName="Run Spring Boot App" description="Run Spring Boot App" category="_ytDy-9uXEe6ejcNNTwSAzA"/>
   <commands xmi:id="_ytWt9tuXEe6ejcNNTwSAzA" elementId="org.eclipse.wst.sse.ui.search.find.occurrences" commandName="Occurrences in File" description="Find occurrences of the selection in the file" category="_ytDy5NuXEe6ejcNNTwSAzA"/>
   <commands xmi:id="_ytWt99uXEe6ejcNNTwSAzA" elementId="org.eclipse.ui.edit.text.scroll.lineDown" commandName="Scroll Line Down" description="Scroll down one line of text" category="_ytDy6duXEe6ejcNNTwSAzA"/>
-  <commands xmi:id="_ytWt-NuXEe6ejcNNTwSAzA" elementId="org.eclipse.ui.ToggleCoolbarAction" commandName="Toggle Main Toolbar Visibility" description="Toggles the visibility of the window toolbar" category="_ytDy8tuXEe6ejcNNTwSAzA"/>
+  <commands xmi:id="_ytWt-NuXEe6ejcNNTwSAzA" elementId="org.eclipse.ui.ToggleCoolbarAction" commandName="Toggle com.algaworks.app.Main Toolbar Visibility" description="Toggles the visibility of the window toolbar" category="_ytDy8tuXEe6ejcNNTwSAzA"/>
   <commands xmi:id="_ytWt-duXEe6ejcNNTwSAzA" elementId="org.eclipse.wst.sse.ui.outline.customFilter" commandName="&amp;Filters" category="_ytDzA9uXEe6ejcNNTwSAzA"/>
   <commands xmi:id="_ytWt-tuXEe6ejcNNTwSAzA" elementId="org.eclipse.ui.navigate.openResource" commandName="Open Resource" description="Open an editor on a particular resource" category="_ytDy6tuXEe6ejcNNTwSAzA">
     <parameters xmi:id="_ytWt-9uXEe6ejcNNTwSAzA" elementId="filePath" name="File Path" typeId="org.eclipse.ui.ide.resourcePath"/>

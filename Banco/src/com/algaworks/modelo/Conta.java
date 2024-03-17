@@ -1,4 +1,4 @@
-package com.algaworks.app;
+package com.algaworks.modelo;
 
 import java.util.Objects;
 
@@ -40,13 +40,13 @@ public class Conta {
         return saldo;
     }
 
-    void depositar (double valor){      //metodo
+    public void depositar(double valor){      //metodo
         if (valor <=0){
             throw new IllegalArgumentException("Valor deve ser maior que Zero");
         }
         saldo =saldo + valor;
     }
-    void sacar (double valor) throws IllegalAccessException {               //metodo
+    public void sacar(double valor) throws IllegalAccessException {               //metodo
         if (valor <=0){
             throw new IllegalArgumentException("Valor deve ser maior que Zero");
         }
@@ -55,7 +55,7 @@ public class Conta {
         }
         saldo = saldo - valor;
     }
-    void sacar (double valor, double taxaSaque) throws IllegalAccessException {
+    public void sacar(double valor, double taxaSaque) throws IllegalAccessException {
        sacar(valor + taxaSaque);
     }
 
