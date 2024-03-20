@@ -16,13 +16,15 @@ public class Main {
 
             ContaInvestimento minhaConta = new ContaInvestimento(titular1, 8253 - 8, 1696 - 0); //Utilizando o Construtor
             ContaEspecial suaConta = new ContaEspecial(titular1,333,1636-5,1500);
-            minhaConta.depositar(15000);
+            minhaConta.depositar(5000);
 //            minhaConta.sacar(15500);
             //minhaConta.creditarRendimentos(0.8);
 
+
+
             Conta conta = minhaConta;         //upcaastinh Polimorfismo
-
-
+            minhaConta.depositar(520);
+            minhaConta.debitarTarifaMensal();
 
 //            ContaEspecial suaConta = new ContaEspecial(titular2, 312352 - 7, 0036,1000);
                     suaConta.depositar(15000.00);

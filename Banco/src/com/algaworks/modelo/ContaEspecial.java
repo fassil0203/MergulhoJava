@@ -13,6 +13,11 @@ public class ContaEspecial extends Conta{
         return getSaldo() + getValorLimite();
     }
 
+    @Override
+    public void debitarTarifaMensal() throws IllegalAccessException {
+        sacar(25);
+    }
+
     public double getValorLimite() {
         return valorLimite;
     }

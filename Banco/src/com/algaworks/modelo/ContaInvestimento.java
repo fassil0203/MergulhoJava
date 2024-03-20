@@ -6,6 +6,13 @@ public class ContaInvestimento  extends Conta{     //Encapsulamento
         super (titular,agencia,numero);
     }
 
+    @Override
+    public void debitarTarifaMensal() throws IllegalAccessException {
+        if (getSaldo() <10000){
+            sacar(30);
+        }
+    }
+
     public void creditarRendimentos(double percentualJuros){
         double valorRendimentos = getSaldo() * percentualJuros / 100 ;
         depositar(valorRendimentos);
