@@ -2,7 +2,7 @@ package com.algaworks.modelo;
 
 public class Pessoa {
     private String nome;
-   private  String documento;
+    private String documento;
 
     public String getNome() {
         return nome;

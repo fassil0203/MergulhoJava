@@ -38,7 +38,7 @@ public abstract class Conta {
             public double getSaldo() {
                 return saldo;
             }
-        public double getSaldoDisponivel(){
+            public double getSaldoDisponivel(){
             return getSaldo();
         }
 
