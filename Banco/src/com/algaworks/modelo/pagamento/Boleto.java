@@ -2,7 +2,7 @@ package com.algaworks.modelo.pagamento;
 
 import com.algaworks.modelo.Pessoa;
 
-public class Boleto implements DocumentoPagar{
+public class Boleto implements DocumentoPagar, DocEstornavel{
 
     private Pessoa beneficiario;
     private double valor;
@@ -20,8 +20,19 @@ public class Boleto implements DocumentoPagar{
     }
 
     @Override
+    public double getvalorTotal() {
+        return 0;
+    }
+
+    @Override
     public boolean estaPago() {
         return pago;
+    }
+
+    @Override
+    public void estornarPagamento() {
+        pago = false;
+
     }
 
     @Override
