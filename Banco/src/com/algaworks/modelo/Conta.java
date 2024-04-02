@@ -1,67 +1,67 @@
 package com.algaworks.modelo;
 
+import com.algaworks.modelo.excecao.SaldoInsuficienteException;
+
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public abstract class Conta {
     private Pessoa titular;
     private int agencia;
     private int numero;
-   private  double saldo;
+    private BigDecimal saldo = BigDecimal.ZERO;
 
     Conta(){        //Construtor sem argumentos
     }
+    public Conta(Pessoa titular, int agencia, int numero) {
+        Objects.requireNonNull(titular);
 
-        public Conta(Pessoa titular, int agencia, int numero) {
-            Objects.requireNonNull(titular) ;               //tem que ter a classe titular  boa pratica
-            this.titular = titular;
-            this.agencia = agencia;
-            this.numero = numero;
+        this.titular = titular;
+        this.agencia = agencia;
+        this.numero = numero;
+    }
+
+    public void depositar(BigDecimal valor) {
+        if (valor.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Valor deve ser maior que 0");
+        }
+        saldo = saldo.add(valor);
+    }
+
+    public void sacar(BigDecimal valor) {
+        if (valor.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Valor deve ser maior que 0");
         }
 
-        public Pessoa getTitular() {
-            return titular;
+        if (getSaldoDisponivel().subtract(valor).compareTo(BigDecimal.ZERO) < 0) {
+            throw new SaldoInsuficienteException("Saldo insuficiente");
         }
+        saldo = saldo.subtract(valor);
+    }
 
-           public int getAgencia() {
-            return agencia;
-        }
+    public void sacar(BigDecimal valor, BigDecimal taxaSaque) {
+        sacar(valor.add(taxaSaque));
+    }
 
+    public abstract void debitarTarifaMensal();
 
-            public int getNumero() {
-                return numero;
-            }
+    public Pessoa getTitular() {
+        return titular;
+    }
 
-            public void setNumero(int numero) {
-                this.numero = numero;
-            }
+    public int getAgencia() {
+        return agencia;
+    }
 
-            public double getSaldo() {
-                return saldo;
-            }
-            public double getSaldoDisponivel(){
-            return getSaldo();
-        }
+    public int getNumero() {
+        return numero;
+    }
 
-            public void depositar(double valor){      //metodo
-                if (valor <=0){
-                    throw new IllegalArgumentException("Valor deve ser maior que Zero");
-                }
-                saldo =saldo + valor;
-            }
-            public void sacar(double valor) throws IllegalAccessException {               //metodo
-                if (valor <= 0){
-                    throw new IllegalArgumentException("Valor deve ser maior que Zero");
-                }
-                if(getSaldoDisponivel() - valor < 0){
-                    throw  new IllegalAccessException("Saldo Insuficiente");
-                }
-                saldo = saldo - valor;
-            }
+    public BigDecimal getSaldo() {
+        return saldo;
+    }
 
-            public void sacar(double valor, double taxaSaque) throws IllegalAccessException {
-               sacar(valor + taxaSaque);
-            }
-
-
-    public abstract void debitarTarifaMensal() throws IllegalAccessException;
+    public BigDecimal getSaldoDisponivel() {
+        return getSaldo();
+    }
 }

@@ -1,55 +1,61 @@
 package com.algaworks.app;
 
+
 import com.algaworks.modelo.*;
 import com.algaworks.modelo.atm.CaixaEletronico;
+import com.algaworks.modelo.excecao.SaldoInsuficienteException;
 import com.algaworks.modelo.pagamento.Boleto;
-import com.algaworks.modelo.pagamento.DocEstornavel;
-import com.algaworks.modelo.pagamento.DocumentoPagar;
 import com.algaworks.modelo.pagamento.Holerite;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+import java.time.LocalDateTime;
+
 public class Main {
-        public static void main(String[] args) throws IllegalAccessException {
-                Pessoa titular1 = new Pessoa();
-                titular1.setNome("Fabio Silva");
-                titular1.setDocumento("12121212");
+    public static void main(String[] args)  {
+        Pessoa titular1 = new Pessoa();
+        titular1.setNome("João da Silva");
+        titular1.setDocumento("12312312311");
+        titular1.setRendimentoAnual(new BigDecimal("15000"));
+        titular1.setTipo(TipoPessoa.JURIDICA);
 
-                CaixaEletronico caixaEletronico = new CaixaEletronico();
+        titular1.setDataUltimaAtualizacao(LocalDateTime.parse("2023-06-27T13:20:00"));
+        System.out.println(titular1.getDataUltimaAtualizacao());
 
-//              Pessoa titular2 = new Pessoa();
-//              titular2.setNome("Rafael Santana");
-//              titular2.setDocumento("12233445");
+        Pessoa titular2 = new Pessoa();
+        titular2.setNome("Maria Abadia");
+        titular2.setDocumento("22233344455");
 
-                ContaInvestimento minhaConta = new ContaInvestimento(titular1, 8253 - 8, 1696 - 0); //Utilizando o Construtor
-                ContaEspecial suaConta = new ContaEspecial(titular1, 333, 1636 - 5, 1500);
-                minhaConta.depositar(30000);
-//              minhaConta.sacar(15500);
-                minhaConta.creditarRendimentos(0.8);
+        CaixaEletronico caixaEletronico = new CaixaEletronico();
 
+        ContaInvestimento minhaConta = new ContaInvestimento(titular1, 123, 987);
+        ContaEspecial suaConta = new ContaEspecial(titular2, 222, 333, new BigDecimal("1000"));
 
-                Conta conta = minhaConta;         //upcaastinh Polimorfismo
-                minhaConta.depositar(520);
-                minhaConta.debitarTarifaMensal();
-                Holerite salarioFuncionario = new Holerite(titular1,100,140);
+        try {
+            minhaConta.depositar(new BigDecimal("30000"));
+            minhaConta.sacar(new BigDecimal("1000"));
 
-                DocumentoPagar boletoEscola = new Boleto(titular1, 600);
-                caixaEletronico.pagar(boletoEscola, minhaConta);
-                caixaEletronico.pagar(salarioFuncionario,minhaConta);
-                //caixaEletronico.docEstornavel(boletoEscola,minhaConta);
-                boletoEscola.imprimirRecibo();
-                salarioFuncionario.imprimirRecibo();
+            suaConta.depositar(new BigDecimal("15000"));
+            suaConta.sacar(new BigDecimal("15500"));
+            suaConta.debitarTarifaMensal();
 
+            Boleto boletoEscola = new Boleto(titular2, new BigDecimal("35000"));
+            Holerite salarioFuncionario = new Holerite(titular2, new BigDecimal("100"), 160);
 
+            caixaEletronico.pagar(boletoEscola, minhaConta);
+            caixaEletronico.pagar(salarioFuncionario, minhaConta);
 
-                System.out.println("Boleto Pago !!! :" + boletoEscola.estaPago());
-                System.out.println("Salario Pago :" + salarioFuncionario.estaPago());
+            caixaEletronico.estornarPagamento(boletoEscola, minhaConta);
 
-
-//              ContaEspecial suaConta = new ContaEspecial(titular2, 312352 - 7, 0036,1000);
-                suaConta.depositar(15000.00);
-                suaConta.sacar(16500);
-
-                caixaEletronico.imprimirSaldo(minhaConta);
-
-
+            boletoEscola.imprimirRecibo();
+            salarioFuncionario.imprimirRecibo();
+        } catch (SaldoInsuficienteException e) {
+            System.out.println("Erro ao executar operação na conta: " + e.getMessage());
         }
-}
+
+        caixaEletronico.imprimirSaldo(minhaConta);
+        System.out.println();
+        caixaEletronico.imprimirSaldo(suaConta);
+    }
+    }

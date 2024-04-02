@@ -1,6 +1,6 @@
 package com.algaworks.modelo.pagamento;
 
-public interface DocEstornavel extends DocumentoPagar{
+public interface DocumentoEstornavel extends DocumentoPagavel{
 
     void estornarPagamento();
 

@@ -1,2 +1,6 @@
-package com.algaworks.modelo;public enum TipoPessoa {
+package com.algaworks.modelo;
+
+public enum TipoPessoa {
+
+    FISICA,JURIDICA
 }

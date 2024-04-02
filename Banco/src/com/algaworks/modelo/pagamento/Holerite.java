@@ -1,21 +1,23 @@
 package com.algaworks.modelo.pagamento;
 import com.algaworks.modelo.Pessoa;
 
-public class Holerite implements DocumentoPagar {
+import java.math.BigDecimal;
+
+public class Holerite implements DocumentoPagavel {
     private Pessoa funcionario;
-    private double valorHora;
+    private BigDecimal valorHora;
     private int quantidadeHoras;
     private boolean pago;
 
-    public Holerite(Pessoa funcionario, double valorHora, int quantidadeHoras) {
+    public Holerite(Pessoa funcionario, BigDecimal valorHora, int quantidadeHoras) {
         this.funcionario = funcionario;
         this.valorHora = valorHora;
         this.quantidadeHoras = quantidadeHoras;
     }
 
     @Override
-    public double getValortotal() {
-        return valorHora * quantidadeHoras;
+    public BigDecimal getValorTotal() {
+        return valorHora.multiply(new BigDecimal(quantidadeHoras));
     }
 
     @Override
@@ -24,7 +26,7 @@ public class Holerite implements DocumentoPagar {
     }
 
     @Override
-    public void quitarPgto() {
+    public void quitarPagamento() {
         pago = true;
     }
 }
